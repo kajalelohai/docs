@@ -1,0 +1,49 @@
+React/Typescript
+
+SetUp
+- npm install -g create-react-app
+- create-react-app myReactTypescriptApp - scripts-version=react-scripts-ts  //this will create new project and install its dependencies in the package.json file.
+
+* create-react-app -> global command line utility to create new projects
+* react-scripts-ts -> development dependency to bring Typescript with standard create-react-app project.
+
+tsconfig.json - contains all Typescript specific options for project.
+tslint.json - settings for the linter that TSLint, will use.
+package.json - contains our dependencies,shortcuts for commands we run for testing,previewing and deploying our app.
+public - contains static assets like HTML page we want to deploy or images. we can delete any file from this folder except index.html.
+src - contains Typescript and CSS code
+index.tsx - entry point of our file and is mandatory.
+
+
+Running the project
+- cd myReactTypescriptApp
+- npm run start
+
+Testing the project
+- npm run test 
+
+Creating a Production Build
+- npm run build  // This will create an optimized JS and CSS build in ./build/static/js and ./build/static/css respectively.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+For chrome (and firefox) we need to do a little work around with creating an <a> element and calling click:
+
+downloadFile(data: any): void {
+    const blob: Blob = new Blob([data], {type: 'text/csv'});
+    const fileName: string = 'my-test.csv';
+    const objectUrl: string = URL.createObjectURL(blob);
+    const a: HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+
+    a.href = objectUrl;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();        
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(objectUrl);
+}
+
+

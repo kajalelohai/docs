@@ -1,0 +1,77 @@
+NodeJs
+
+-- process is the global object in node.
+-- setPrompt(`Message on console`); - this is to set the message to be printed to the console.
+-- prompt(); - this is to display the message we set through the setPrompt method.
+
+fs - for the CRUD operations on file system. (require('fs')) 
+create a file - fs.writeFile('','',(err) => {
+	if(err){console.log(err)}
+	else{
+	console.log('File successfully created');
+	}
+})
+
+creating a 
+
+It takes three parameters:
+first- name with the path of the file.
+second- data we want in the file
+third- callback function
+read a file
+
+rename a file - fs.rename();
+	- It takes 3 arguments 
+		first - name of the file we want to rename.
+		second - what we want to rename the file to.
+		third - its the callback function.
+
+Eg : fs.rename('example.txt','example2.txt', (err)=>{
+if(err){
+console.log(err)
+}
+else{
+console.log('Successfully renamed the file');
+}
+})
+
+Append data to file - fs.appendFile()
+	- It takes 3 arguments :
+		first : name of the file
+		second : data to be appended to the file
+		third: callback function that takes an error as a parameter.
+
+delete the file - fs.unlink()
+	It takes 2 arguments
+		first - the name of the file to be deleted.
+		second - the callback function.
+
+Working with Folders:
+
+create a Folder : fs.mkdir();
+	It takes 2 args:
+	first is the name of the folder
+	second is the callback function
+
+
+delete the folder : fs.rm();
+
+It takes two paramenters:
+first name of the folder
+second is the callback function
+
+deleting a folder having file within it - first we need to delete the files within a folder then we will remove the folder.
+
+Eg: fs.unlink('./tutorial/example.txt',()=>{
+if(err){console.log(err)}
+else{
+fs.rmdir('turorial',(err)=>{
+if(err){console.log(err)}
+else{
+console.log('deleted folder');
+}
+})
+}
+})
+
+

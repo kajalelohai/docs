@@ -1,0 +1,31 @@
+* Remove Array Duplicates : 
+	-3 ways to filter out duplicates from an array and return only unique values.
+ 	-const array = [1,1,2,3,3,6];
+
+1. Using "Set" Cause :
+	Its the shortest and simplest.
+	Set is new Data Object introduced in ES6.
+	It lets us store only unique values and removes duplicates. 	
+	- create new set by passing an array (const uniqueSet = new Set(array)). This will remove duplicates.
+	- Now we convert it back to an array using spread operator(...uniqueSet).
+Ex: [...new Set(array)]
+
+Note: We can convert a SET to an array using "Array.from" as "Array.from(new Set(array));"
+
+2. Using "filter" :
+	- array.filter((item,index) => array.indexOf(item) === index);
+	
+here, indexOf returns the first index of the provided element from "array".
+and filter method creates the new array of elements that passes the condition provided in the method.
+Like if the element passes the condition and returns "true" than its included in the filtered array and if in case it returns "false" then it will not be in the filtered array.
+
+Note: we can filter the duplicate values also by moidifying the condition in the filter method as :
+- array.filter((item,index) => array.indexOf(item) !== index);
+
+3. Using Reduce :
+	- array.reduce((unique,item)=>unique.includes(unique,item) => unique.includes(item) ? unique : [...unique, item], [] )
+	- reduces the elements from the array and combines them into a final array based on some reducer function that we pass.
+
+here, our reducer function is checking that if the final array contains an item, if it doesn't, push that item to the final array else skip that element and return the final array as it is(i.e essentially skipping over that element).
+
+
